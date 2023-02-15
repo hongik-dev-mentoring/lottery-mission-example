@@ -30,6 +30,10 @@ public enum Rank {
                 .orElse(NONE);
     }
 
+    public int getMatchedNumbers() {
+        return matchedNumbers;
+    }
+
     public int getPrize() {
         return prize;
     }

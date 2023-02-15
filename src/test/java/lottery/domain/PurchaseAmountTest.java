@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -27,5 +28,13 @@ class PurchaseAmountTest {
         final PurchaseAmount purchaseAmount = new PurchaseAmount(amount);
 
         assertThat(purchaseAmount.calculateLotteries()).isEqualTo(expected);
+    }
+
+    @DisplayName("수익률을 계산한다.")
+    @Test
+    void calculateWinningRate() {
+        final PurchaseAmount purchaseAmount = new PurchaseAmount("2000");
+
+        assertThat(purchaseAmount.calculateWinningRate(1000)).isEqualTo(0.5);
     }
 }

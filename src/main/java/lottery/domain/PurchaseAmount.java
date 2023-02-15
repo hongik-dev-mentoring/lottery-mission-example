@@ -27,6 +27,10 @@ public class PurchaseAmount {
         return amount / LOTTERY_PRICE;
     }
 
+    public double calculateWinningRate(final int winningAmount) {
+        return (double) winningAmount / amount;
+    }
+
     @Override
     public boolean equals(final Object o) {
         if (this == o) {

@@ -11,7 +11,7 @@ class LotteryMachineTest {
     @DisplayName("로또 한 장을 생산한다.")
     @Test
     void generateLottery() {
-        final Lottery lottery = LotteryMachine.generate();
+        final Lottery lottery = new LotteryMachineFactory().generate();
 
         assertThat(lottery.getNumbers().size()).isEqualTo(6);
     }

@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 
 import java.util.List;
 import lottery.common.FakeLotteryMachine;
-import lottery.dto.WinningStatisticsDto;
+import lottery.domain.dto.WinningStatisticsDto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

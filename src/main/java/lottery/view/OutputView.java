@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 import lottery.domain.Lottery;
 import lottery.domain.Rank;
-import lottery.dto.WinningStatisticsDto;
+import lottery.domain.dto.WinningStatisticsDto;
 
 public class OutputView {
 

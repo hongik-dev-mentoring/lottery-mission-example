@@ -8,7 +8,7 @@ import java.util.Objects;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import lottery.dto.WinningStatisticsDto;
+import lottery.domain.dto.WinningStatisticsDto;
 
 public class LotteryGame {
 

@@ -5,7 +5,7 @@ import lottery.domain.Lottery;
 import lottery.domain.LotteryGame;
 import lottery.domain.LotteryMachineFactory;
 import lottery.domain.PurchaseAmount;
-import lottery.dto.WinningStatisticsDto;
+import lottery.domain.dto.WinningStatisticsDto;
 import lottery.view.InputView;
 import lottery.view.OutputView;
 import lottery.view.dto.WinningNumberDto;

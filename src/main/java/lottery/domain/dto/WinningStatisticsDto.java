@@ -1,4 +1,4 @@
-package lottery.dto;
+package lottery.domain.dto;
 
 import java.util.Map;
 import lottery.domain.Rank;

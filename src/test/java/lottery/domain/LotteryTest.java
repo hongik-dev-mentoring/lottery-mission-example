@@ -1,5 +1,7 @@
 package lottery.domain;
 
+import static lottery.common.Fixture.LOTTERY_NUMBERS;
+import static lottery.common.Fixture.LOTTERY_NUMBERS2;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -25,7 +27,7 @@ class LotteryTest {
         @DisplayName("로또 생성 조건을 만족하면 생성한다.")
         @Test
         void createLotterySuccess() {
-            Lottery lottery = new Lottery(List.of(1, 2, 3, 4, 5, 6));
+            Lottery lottery = new Lottery(LOTTERY_NUMBERS);
 
             assertThat(lottery.getNumbers().size()).isEqualTo(6);
         }
@@ -52,8 +54,8 @@ class LotteryTest {
     @DisplayName("같은 숫자 갯수를 찾아 반환한다.")
     @Test
     void findSameLotteryNumbers() {
-        Lottery lottery = new Lottery(List.of(1, 2, 3, 4, 5, 6));
-        Lottery lottery1 = new Lottery(List.of(1, 2, 6, 7, 8, 9));
+        Lottery lottery = new Lottery(LOTTERY_NUMBERS);
+        Lottery lottery1 = new Lottery(LOTTERY_NUMBERS2);
 
         assertThat(lottery.findTheNumberOfSameNumbers(lottery1)).isEqualTo(3);
     }

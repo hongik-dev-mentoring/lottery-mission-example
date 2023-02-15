@@ -1,9 +1,11 @@
 package lottery.domain;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 @DisplayName("PurchaseAmount 는 ")
@@ -16,5 +18,14 @@ class PurchaseAmountTest {
         assertThatThrownBy(() -> new PurchaseAmount(amount))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("구입 금액은 양의 정수여야 합니다.");
+    }
+
+    @DisplayName("입력한 금액을 이용해 구입 가능한 로또 갯수를 산출한다.")
+    @ParameterizedTest
+    @CsvSource(value = {"2000, 2", "1400, 1"})
+    void calculateLotteries(final String amount, final int expected) {
+        final PurchaseAmount purchaseAmount = new PurchaseAmount(amount);
+
+        assertThat(purchaseAmount.calculateLotteries()).isEqualTo(expected);
     }
 }

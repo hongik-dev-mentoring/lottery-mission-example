@@ -1,37 +1,21 @@
 package lottery.domain;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Lottery {
 
-    private static final int MAX_NUMBER = 45;
-    private static final int MIN_NUMBER = 1;
-    private static final int LOTTERY_SIZE = 6;
+    public static final int MAX_NUMBER = 45;
+    public static final int MIN_NUMBER = 1;
+
+    public static final int LOTTERY_SIZE = 6;
     private static final String LOTTERY_SIZE_ERROR = "로또 사이즈는 6이어야 합니다.";
     private static final String LOTTERY_NUMBER_DUPLICATED_ERROR = "로또 숫자는 중복일 수 없습니다.";
     private static final String LOTTERY_NUMBER_INVALID_RANGE_ERROR = "로또 숫자는 1-45 사이 숫자여야 합니다.";
-    private static final List<Integer> LOTTERY_NUMBER;
 
     private final List<Integer> numbers;
-
-    static {
-        LOTTERY_NUMBER = IntStream.rangeClosed(MIN_NUMBER, MAX_NUMBER)
-                .boxed()
-                .collect(Collectors.toList());
-    }
-
-    public static Lottery generate() {
-        Collections.shuffle(LOTTERY_NUMBER);
-        List<Integer> lotteryNumbers = LOTTERY_NUMBER.stream()
-                .limit(LOTTERY_SIZE)
-                .collect(Collectors.toList());
-        return new Lottery(lotteryNumbers);
-    }
 
     public Lottery(List<Integer> lotteryNumbers) {
         validateLotteryNumber(lotteryNumbers);

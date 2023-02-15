@@ -25,7 +25,7 @@ class LotteryTest {
         @DisplayName("로또 생성 조건을 만족하면 생성한다.")
         @Test
         void createLotterySuccess() {
-            Lottery lottery = Lottery.generate();
+            Lottery lottery = new Lottery(List.of(1, 2, 3, 4, 5, 6));
 
             assertThat(lottery.getNumbers().size()).isEqualTo(6);
         }

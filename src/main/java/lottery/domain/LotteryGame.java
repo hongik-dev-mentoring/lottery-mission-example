@@ -16,7 +16,7 @@ public class LotteryGame {
     }
 
     public List<Lottery> purchaseLotteries() {
-        lotteries = Stream.generate(Lottery::generate)
+        lotteries = Stream.generate(LotteryMachine::generate)
                 .limit(purchaseAmount.calculateLotteries())
                 .collect(Collectors.toList());
         return new ArrayList<>(lotteries);

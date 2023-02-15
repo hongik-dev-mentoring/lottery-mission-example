@@ -18,4 +18,10 @@ class LotteryGameTest {
 
         assertThat(lotteries.size()).isEqualTo(3);
     }
+
+    @DisplayName("당첨 통계와 수익률을 계산해야 한다.")
+    @Test
+    void calculateWinningStatistics() {
+
+    }
 }

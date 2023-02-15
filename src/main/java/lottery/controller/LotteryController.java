@@ -13,7 +13,7 @@ import lottery.view.dto.WinningNumberDto;
 public class LotteryController {
 
     public void startGame() {
-        final String amount = InputView.inputPurchaceAmount();
+        final String amount = InputView.inputPurchaseAmount();
         final LotteryGame lotteryGame = new LotteryGame(new PurchaseAmount(amount));
         List<Lottery> lotteries = lotteryGame.purchaseLotteries(new LotteryMachineFactory());
 

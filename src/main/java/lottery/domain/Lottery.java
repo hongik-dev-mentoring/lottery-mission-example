@@ -67,8 +67,8 @@ public class Lottery {
     }
 
     private boolean isNumberOfInvalidRange(final List<Integer> lotteryNumbers) {
-        return !lotteryNumbers.stream()
-                .anyMatch(number -> MAX_NUMBER < number || number < MIN_NUMBER);
+        return lotteryNumbers.stream()
+                .noneMatch(number -> MAX_NUMBER < number || number < MIN_NUMBER);
     }
 
     public int findTheNumberOfSameNumbers(final Lottery lottery) {

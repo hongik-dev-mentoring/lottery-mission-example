@@ -11,7 +11,7 @@ class RankTest {
     @DisplayName("알맞은 등수를 계산해야 한다.")
     @Test
     void calculateProperRank() {
-        Rank expected = Rank.calculate(5, 1);
+        Rank expected = Rank.calculate(5, true);
 
         assertThat(expected).isEqualTo(Rank.SECOND);
     }

@@ -48,4 +48,13 @@ class LotteryTest {
             );
         }
     }
+
+    @DisplayName("같은 숫자 갯수를 찾아 반환한다.")
+    @Test
+    void findSameLotteryNumbers() {
+        Lottery lottery = new Lottery(List.of(1, 2, 3, 4, 5, 6));
+        Lottery lottery1 = new Lottery(List.of(1, 2, 6, 7, 8, 9));
+
+        assertThat(lottery.findTheNumberOfSameNumbers(lottery1)).isEqualTo(3);
+    }
 }

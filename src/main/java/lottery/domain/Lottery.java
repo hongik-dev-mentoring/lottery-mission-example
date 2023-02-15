@@ -1,5 +1,6 @@
 package lottery.domain;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -22,6 +23,14 @@ public class Lottery {
         LOTTERY_NUMBER = IntStream.rangeClosed(MIN_NUMBER, MAX_NUMBER)
                 .boxed()
                 .collect(Collectors.toList());
+    }
+
+    public static Lottery generate() {
+        Collections.shuffle(LOTTERY_NUMBER);
+        List<Integer> lotteryNumbers = LOTTERY_NUMBER.stream()
+                .limit(LOTTERY_SIZE)
+                .collect(Collectors.toList());
+        return new Lottery(lotteryNumbers);
     }
 
     public Lottery(List<Integer> lotteryNumbers) {
@@ -62,12 +71,10 @@ public class Lottery {
                 .anyMatch(number -> MAX_NUMBER < number || number < MIN_NUMBER);
     }
 
-    public static Lottery generate() {
-        Collections.shuffle(LOTTERY_NUMBER);
-        List<Integer> lotteryNumbers = LOTTERY_NUMBER.stream()
-                .limit(LOTTERY_SIZE)
-                .collect(Collectors.toList());
-        return new Lottery(lotteryNumbers);
+    public int findTheNumberOfSameNumbers(final Lottery lottery) {
+        final ArrayList<Integer> sameNumbers = new ArrayList<>(numbers);
+        sameNumbers.retainAll(lottery.numbers);
+        return sameNumbers.size();
     }
 
     public List<Integer> getNumbers() {

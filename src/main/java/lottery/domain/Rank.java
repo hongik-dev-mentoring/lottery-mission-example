@@ -9,8 +9,7 @@ public enum Rank {
     THIRD(5, false, 1_500_000),
     FOURTH(4, true, 50_000),
     FIFTH(3, false, 5_000),
-    NONE(2, false, 0)
-    ;
+    NONE(2, false, 0);
 
     private final int matchedNumbers;
     private final boolean hasBonusNumber;

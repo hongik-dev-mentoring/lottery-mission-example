@@ -9,8 +9,8 @@ public class Lottery {
 
     public static final int MAX_NUMBER = 45;
     public static final int MIN_NUMBER = 1;
-
     public static final int LOTTERY_SIZE = 6;
+
     private static final String LOTTERY_SIZE_ERROR = "로또 사이즈는 6이어야 합니다.";
     private static final String LOTTERY_NUMBER_DUPLICATED_ERROR = "로또 숫자는 중복일 수 없습니다.";
     private static final String LOTTERY_NUMBER_INVALID_RANGE_ERROR = "로또 숫자는 1-45 사이 숫자여야 합니다.";

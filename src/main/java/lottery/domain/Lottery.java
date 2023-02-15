@@ -11,6 +11,9 @@ public class Lottery {
     private static final int MAX_NUMBER = 45;
     private static final int MIN_NUMBER = 1;
     private static final int LOTTERY_SIZE = 6;
+    private static final String LOTTERY_SIZE_ERROR = "로또 사이즈는 6이어야 합니다.";
+    private static final String LOTTERY_NUMBER_DUPLICATED_ERROR = "로또 숫자는 중복일 수 없습니다.";
+    private static final String LOTTERY_NUMBER_INVALID_RANGE_ERROR = "로또 숫자는 1-45 사이 숫자여야 합니다.";
     private static final List<Integer> LOTTERY_NUMBER;
 
     private final List<Integer> numbers;
@@ -21,8 +24,42 @@ public class Lottery {
                 .collect(Collectors.toList());
     }
 
-    private Lottery(List<Integer> lotteryNumber) {
-        this.numbers = lotteryNumber;
+    public Lottery(List<Integer> lotteryNumbers) {
+        validateLotteryNumber(lotteryNumbers);
+        this.numbers = lotteryNumbers;
+    }
+
+    private void validateLotteryNumber(final List<Integer> lotteryNumbers) {
+        validateSize(lotteryNumbers);
+        validateDuplicatedNumber(lotteryNumbers);
+        validateLotteryNumberRange(lotteryNumbers);
+    }
+
+    private void validateSize(final List<Integer> lotteryNumbers) {
+        if (lotteryNumbers.size() != LOTTERY_SIZE) {
+            throw new IllegalArgumentException(LOTTERY_SIZE_ERROR);
+        }
+    }
+
+    private void validateDuplicatedNumber(final List<Integer> lotteryNumbers) {
+        List<Integer> uniqueNumbers = lotteryNumbers.stream()
+                .distinct()
+                .collect(Collectors.toList());
+
+        if (uniqueNumbers.size() != lotteryNumbers.size()) {
+            throw new IllegalArgumentException(LOTTERY_NUMBER_DUPLICATED_ERROR);
+        }
+    }
+
+    private void validateLotteryNumberRange(final List<Integer> lotteryNumbers) {
+        if (!isNumberOfInvalidRange(lotteryNumbers)) {
+            throw new IllegalArgumentException(LOTTERY_NUMBER_INVALID_RANGE_ERROR);
+        }
+    }
+
+    private boolean isNumberOfInvalidRange(final List<Integer> lotteryNumbers) {
+        return !lotteryNumbers.stream()
+                .anyMatch(number -> MAX_NUMBER < number || number < MIN_NUMBER);
     }
 
     public static Lottery generate() {

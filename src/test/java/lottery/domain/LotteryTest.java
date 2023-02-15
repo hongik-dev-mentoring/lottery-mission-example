@@ -59,4 +59,12 @@ class LotteryTest {
 
         assertThat(lottery.findTheNumberOfSameNumbers(lottery1)).isEqualTo(3);
     }
+
+    @DisplayName("특정 숫자를 가지고 있는지 판단한다.")
+    @Test
+    void containNumber() {
+        Lottery lottery = new Lottery(LOTTERY_NUMBERS);
+
+        assertThat(lottery.containNumber(3)).isTrue();
+    }
 }

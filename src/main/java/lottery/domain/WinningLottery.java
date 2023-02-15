@@ -8,8 +8,15 @@ public class WinningLottery {
     private final int bonusNumber;
 
     public WinningLottery(final Lottery lottery, final int bonusNumber) {
+        validateWinningLottery(lottery, bonusNumber);
         this.lottery = lottery;
         this.bonusNumber = bonusNumber;
+    }
+
+    private void validateWinningLottery(final Lottery lottery, final int bonusNumber) {
+        if (lottery.containNumber(bonusNumber)) {
+            throw new IllegalArgumentException("보너스 볼의 숫자와 당첨 번호가 중복일 수 없습니다.");
+        }
     }
 
     public Rank calculateRank(final Lottery purchasedLottery) {

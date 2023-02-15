@@ -61,6 +61,10 @@ public class Lottery {
         return sameNumbers.size();
     }
 
+    public boolean containNumber(final int number) {
+        return numbers.contains(number);
+    }
+
     public List<Integer> getNumbers() {
         return numbers;
     }
